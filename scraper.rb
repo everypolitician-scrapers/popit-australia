@@ -24,4 +24,5 @@ end
 
 data.each_with_index do |r, i|
   puts "Adding #{i+1}. #{r[:id]}: #{r}"
+  ScraperWiki.save_sqlite([:id], data)
 end
