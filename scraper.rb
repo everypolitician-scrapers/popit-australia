@@ -19,7 +19,7 @@ data = json_from('https://australia.popit.mysociety.org/api/v0.1/export.json')['
     email: (p['contact_details'].find { |l| l['type'] == 'email' } || {})['value'],
     facebook: (p['contact_details'].find { |l| l['type'] == 'facebook' } || {})['value'],
     twitter: (p['contact_details'].find { |l| l['type'] == 'twitter' } || {})['value'],
-  }
+  }.reject { |_, v| v == 'null' }
 end
 
 data.each_with_index do |r, i|
